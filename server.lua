@@ -5,16 +5,16 @@ for cmd, coords in pairs(Config.Teleports) do
     RegisterCommand(cmd, function(source, args)
         local targetId = tonumber(args[1])
         if not targetId then
-            TriggerClientEvent('kollegah_hud:notify', source, { args = { '^1SYSTEM', 'Bitte gebe eine PlayerID an.' } })
+            TriggerClientEvent('hud:notify', source, { args = { '^1SYSTEM', 'Bitte gebe eine PlayerID an.' } })
             return
         end
 
         local xPlayer = ESX.GetPlayerFromId(targetId)
         if xPlayer then
             TriggerClientEvent('teleportScript:teleportPlayer', targetId, coords)
-            TriggerClientEvent('kollegah_hud:notify', source, { args = { '^2SYSTEM', 'Spieler wurde teleportiert.' } })
+            TriggerClientEvent('hud:notify', source, { args = { '^2SYSTEM', 'Spieler wurde teleportiert.' } })
         else
-            TriggerClientEvent('kollegah_hud:notify', source, { args = { '^1SYSTEM', 'Ungültige PlayerID.' } })
+            TriggerClientEvent('hud:notify', source, { args = { '^1SYSTEM', 'Ungültige PlayerID.' } })
         end
     end, false)
 end
